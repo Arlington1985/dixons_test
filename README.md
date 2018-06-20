@@ -2,6 +2,9 @@
 
 This project is solution for interview question in dixons: http://tech.dixons.cz/devopstest
 
+You can also read about it from here with flowchart: http://rovshanmusayev.blogspot.com/2018/06/dixonst-interview-question.html
+
+
 ## Getting Started
 
 
@@ -14,7 +17,7 @@ Publisher will get input parameters from CI tool and will send data to general e
 As as introduction let me tell you, it was developed and tested in Ubuntu 17.10. Publisher developed in bash, as a message queue was chosen RabbitMQ,  and consumer part developed in Python
 
 
-#1. Publisher
+# 1. Publisher
 
 As a requirement  was publisher side should be as simple as possible, I have developed shell script which accept two parameters:
 
@@ -25,7 +28,7 @@ As a requirement  was publisher side should be as simple as possible, I have dev
 
 
 PS... It's important to remember that if you don't want to loose messages consumer part should be started firstly, because of binding queue part will be done inside consumer. How it was designed currently during short period and of course it might be done better.
-#2. Queue
+# 2. Queue
 
 First I wanted to use REDIS. Actually it's in-memory and key-value database. It has not native features of Message queue, but it has some advantages like simplicity, size and speed. With RPOPLPUSH command in consumer it's very convenient to move one message (value) from one queue(key) to another and later after processing remove with LREM command. But it's not very reliable. What if consumer will stop working. Also speed is not an issue for us, because we will only ship little deployment information from time to time. Most important thing here our scenario with two consumer doesn't really works with Redis. 
 
@@ -43,7 +46,7 @@ It will pull docker image of Rabbit, run inside docker container and expose port
 
 Or we can use any cloud services which offers RabbitMQ.
 
-#3. Consumer 
+# 3. Consumer 
 
 Most important part is the consumer part. I have developed python application which will consume this queue. Virtuanev and pip tool were used to setting environment and Pika library for interracting with RabbitMQ.
 
