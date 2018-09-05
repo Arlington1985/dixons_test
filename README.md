@@ -70,6 +70,10 @@ Run the following command in order to have consumer up and running:
 ./install_run.sh
 ```
 
+## Configuration
+
+```config.ini``` file contains configuration parameters for ```consumer.py``` script. If you want to avoid of installation RabbitMQ on your local environment you can use CloudAMQP instead. Just comment existing CLOUDAMQP_URL and uncomment second one which already presented there. In that case you have to update this parameter also in ```publisher.sh``` file. Using CloudAMQP is more convinient if you want just to test.
+
 ## Authors
 
 * **Rovshan Musayev** 
